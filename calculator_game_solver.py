@@ -130,6 +130,10 @@ class FunOperator(Operator):
     return self.o(o)
 
 
+def sign(x):
+  return int(x/abs(x))
+
+
 VAL_OPERATORS = {
   "addN": lambda n: lambda v: n + v,
   "multN": lambda n: lambda v: n * v,
@@ -141,7 +145,7 @@ VAL_OPERATORS = {
 }
 
 FUN_OPERATORS = {
-  "faddN": lambda n: lambda vo: Operator(vo.operation, vo.n + n)
+  "faddN": lambda n: lambda vo: Operator(vo.operation, vo.n + sign(vo.n) * n)
 }
 
 
